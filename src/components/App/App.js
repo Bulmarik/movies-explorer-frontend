@@ -2,19 +2,18 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
+// import SavedMovies from '../SavedMovies/SavedMovies';
+// import Profile from '../Profile/Profile';
+// import Login from '../Login/Login';
+// import Register from '../Register/Register';
 
 
 
 
-import './App.css';
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <Switch>
         <Route exact path='/'>
           <Main />
@@ -22,7 +21,7 @@ function App() {
         <Route path='/movies'>
           <Movies />
         </Route>
-        <Route path='/saved-movies'>
+        {/* <Route path='/saved-movies'>
           <SavedMovies />
         </Route>
         <Route path='/profile'>
@@ -33,7 +32,7 @@ function App() {
         </Route>
         <Route path='/signup'>
           <Register />
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );

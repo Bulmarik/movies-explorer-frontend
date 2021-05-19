@@ -1,0 +1,35 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+.nav__li {
+  text-decoration: none;
+
+}
+
+.nav__li_main {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav__button {
+  width: 76px;
+  height: 32px;
+  font-weight: 500;
+  border: none;
+  border-radius: 3px;
+  background-color: #3DDC84;
+  margin-left: 30px;
+  padding: 0;
+}
+

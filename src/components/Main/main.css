@@ -1,0 +1,11 @@
+.main__section-header {
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 23px;
+}
+
+.main__section-title {
+  font-size: 22px;
+  line-height: 1.21;
+  font-weight: 400;
+  margin: 0;
+}
