@@ -6,7 +6,6 @@
   padding: 80px 70px 83px;
   box-sizing: border-box;
   margin-bottom: 10px;
-  /* background-color: #202020; */
   border-bottom: 1px solid rgba(170, 170, 170, .2);
 }
 
@@ -41,20 +40,25 @@
   margin: 7px;
 }
 
+.search-form__checkbox {
+  margin-left: 41px;
+}
+
 .search-form__checkbox-btn {
   display: none;
 }
 
 .search-form__checkbox-text {
+  display: flex;
+  flex-wrap: nowrap;
   font-size: 13px;
   line-height: 1.38;
 }
 
 .search-form__checkbox-text::after {
   content: '';
-  display: inline-block;
   margin-left: 14px;
-  vertical-align: middle;
+  vertical-align: top;
   width: 36px;
   height: 20px;
   background-image: url('../../../images/smalltumb-off.svg');
