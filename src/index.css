@@ -1,14 +1,7 @@
-.page {
-  background-color: #000;
-  color: #ffffff;
-  font-family: 'Inter', 'Arial', sans-serif;
-  font-weight: 400;
-}
 
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts.css);
 @import url(./components/App/App.css);
-@import url(./components/Main/Main.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Navigation/Navigation.css);
 @import url(./components/Main/Promo/Promo.css);
@@ -21,3 +14,22 @@
 @import url(./components/Movies/SearchForm/SearchForm.css);
 @import url(./components/Movies/MoviesCardList/MoviesCardList.css);
 @import url(./components/Movies/MoviesCard/MoviesCard.css);
+@import url(./components/Register/Rigister.css);
+@import url(./components/Login/Login.css);
+@import url(./components/Profile/Profile.css);
+
+.page {
+  background-color: #000;
+  color: #ffffff;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+}
+
+.element-hover {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.element-hover:hover {
+  opacity: 0.5;
+}

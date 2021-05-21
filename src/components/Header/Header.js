@@ -8,7 +8,7 @@ export default function Header(props) {
   return (
     <header className={`header ${props.background}`}>
       <Link to="/">
-        <img className="header__logo" src={logo} alt='Логотип'/>
+        <img className="header__logo element-hover" src={logo} alt='Логотип'/>
       </Link>
       <Navigation />
     </header>

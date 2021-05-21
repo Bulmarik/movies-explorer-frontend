@@ -9,7 +9,7 @@ export default function Movies() {
 
   return (
     <div className="movies">
-      <Header background="header_movies"/>
+      <Header />
       <SearchForm />
       <MoviesCardList />
       <Footer />

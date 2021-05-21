@@ -1,7 +1,6 @@
 .portfolio {
-  padding: 100px 70px 120px;
+  padding: 100px 70px 125px;
   box-sizing: border-box;
-  background-color: #202020;
 }
 
 .portfolio__title {
@@ -19,17 +18,25 @@
 }
 
 .portfolio__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 89px;
   border-bottom: 1px solid #424242;
-  font-size: 30px;
-  line-height: 1.67;
+  margin-bottom: 20px;
+  padding-bottom: 19px;
+  box-sizing: border-box;
 }
 
-.portfolio__item:last-child {
-  border-bottom: none
+.portfolio__item:last-of-type {
+  border-bottom: none;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.portfolio__link {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  font-size: 30px;
+  line-height: 1.67;
+  color: #fff;
 }
 
 .portfolio__text {

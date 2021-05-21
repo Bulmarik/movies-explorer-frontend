@@ -7,13 +7,13 @@ export default function SearchForm() {
     <div className="search-form">
       <form className="search-form__form">
         <input className="search-form__input" type="search" placeholder="Фильм" required />
-        <button className="search-form__btn" type="submit" >
+        <button className="search-form__btn element-hover" type="submit" >
           <img src={searchIcon} alt="Искать" />
         </button>
       </form>
       <label className="search-form__checkbox">
         <input className="search-form__checkbox-btn" type="checkbox" id="short-film"/>
-        <label className="search-form__checkbox-text" htmlFor="short-film">Короткометражки</label>
+        <label className="search-form__checkbox-text element-hover" htmlFor="short-film">Короткометражки</label>
       </label>
     </div>
   );

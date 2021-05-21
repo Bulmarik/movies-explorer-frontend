@@ -20,7 +20,7 @@ export default function MoviesCardList() {
         <MoviesCard img={slova} description="33 слова о дизайне" duration="1ч 47м" />
         <MoviesCard img={slova} description="33 слова о дизайне" duration="1ч 47м" />
       </ul>
-      <button className="movies-card-list__else-btn">Ещё</button>
+      <button className="movies-card-list__else-btn element-hover">Ещё</button>
     </div>
   );
 }

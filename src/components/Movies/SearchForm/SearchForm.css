@@ -50,7 +50,7 @@
 
 .search-form__checkbox-text {
   display: flex;
-  flex-wrap: nowrap;
+  align-items: center;
   font-size: 13px;
   line-height: 1.38;
 }
@@ -58,7 +58,6 @@
 .search-form__checkbox-text::after {
   content: '';
   margin-left: 14px;
-  vertical-align: top;
   width: 36px;
   height: 20px;
   background-image: url('../../../images/smalltumb-off.svg');
