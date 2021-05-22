@@ -40,6 +40,10 @@
   margin: 7px;
 }
 
+.search-form__btn:hover {
+  cursor: pointer;
+}
+
 .search-form__checkbox {
   margin-left: 41px;
 }
@@ -53,6 +57,10 @@
   align-items: center;
   font-size: 13px;
   line-height: 1.38;
+}
+
+.search-form__checkbox-text:hover {
+  cursor: pointer;
 }
 
 .search-form__checkbox-text::after {

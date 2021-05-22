@@ -16,7 +16,6 @@ export default function Profile() {
     });
   }
 
-
   return (
     <>
       <Header />
@@ -31,7 +30,7 @@ export default function Profile() {
           <input className="profile__input profile__input_type_email" onChange={handleChange} value={inputValue.email || "pochta@yandex.ru"} name="email" type="email" autoComplete="off" required />
         </div>
         <button className="profile__btn profile__btn_submit element-hover" type="submit">Редактировать</button>
-        <button className="profile__btn profile__btn_signout element-hover" type="submit">Выйти из аккаунта</button>
+        <button className="profile__btn profile__btn_signout element-hover" type="button">Выйти из аккаунта</button>
       </form>
     </>
   );
