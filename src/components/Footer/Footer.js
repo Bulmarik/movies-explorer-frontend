@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="footer">
       <h2 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h2>
       <div className="footer__content">
-        <p className="footer__copyright">&copy;2020</p>
+        <p className="footer__copyright">&copy;2021</p>
         <ul className="footer__items">
           <li className="footer__item">
             <a className="footer__link element-hover" href="https://praktikum.yandex.ru" target="_blank" rel ='noreferrer'>Яндекс.Практикум</a>
