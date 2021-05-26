@@ -1,4 +1,4 @@
-.register {
+.user-form {
   width: 396px;
   margin: auto;
   padding: 70px 0;
@@ -49,12 +49,12 @@
 .form__submit-btn {
   width: 100%;
   height: 45px;
-  margin-top: 67px;
+  margin-top: 69px;
   background-color: #4285F4;
   border: none;
   border-radius: 3px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.21;
   color: #fff;
 }
@@ -62,10 +62,44 @@
 .form__question {
   margin: 16px 0 0;
   text-align: center;
+  font-size: 14px;
+  line-height: 1.21;
   color: #8B8B8B;
 }
 
 .form__link {
   text-decoration: none;
   color: #4285F4;
+}
+
+@media screen and (max-width: 960px) {
+  .user-form {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 482px) {
+  .user-form {
+    width: 100%;
+    padding: 56px 30px 30px;
+    margin: 0;
+  }
+
+  .form__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.21;
+    margin: 50px 0 80px;
+    text-align: center;
+  }
+
+  .form__submit-btn {
+    margin-top: 157px;
+    font-size: 12px;
+  }
+
+  .form__question {
+    margin: 14px 0 0;
+    font-size: 12px;
+  }
 }

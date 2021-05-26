@@ -10,7 +10,9 @@ export default function Header(props) {
       <Link to="/">
         <img className="header__logo element-hover" src={logo} alt='Логотип'/>
       </Link>
-      <Navigation />
+      <Navigation 
+      openNavBar={props.openNavBar}
+      />
     </header>
   );
 }

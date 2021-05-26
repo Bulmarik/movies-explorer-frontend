@@ -13,14 +13,14 @@ export default function Login() {
     const {name, value} = e.target;
     setInputValue({
       ...inputValue,
-      [name]: value 
+      [name]: value
     });
   }
 
   return (
-    <div className="login">
+    <div className="user-form">
       <Link to="/">
-        <img className="header__logo element-hover" src={logo} alt='Логотип'/>
+        <img className="header__logo header__logo_center element-hover" src={logo} alt='Логотип'/>
       </Link>
       <form className="form" id="form" action="#" method="post">
         <h2 className="form__title">Рады видеть!</h2>

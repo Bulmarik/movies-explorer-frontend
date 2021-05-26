@@ -11,7 +11,7 @@ export default function SavedMovies() {
     <div className="movies">
       <Header background="header_movies"/>
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList hideBtn="movies-card-list__else-btn-hide"/>
       <Footer />
     </div>
   );

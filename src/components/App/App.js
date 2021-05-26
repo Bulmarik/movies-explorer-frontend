@@ -7,12 +7,20 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Error from '../Error/Error';
+import NavBar from '../NavBar/NavBar';
 
 
+export default function App() {
+  const [isNavBarOpen, setIsNavBarOpen] = React.useState(false);
+  
+  function handleNavBarOpen() {
+    setIsNavBarOpen(true)
+  }
 
+  function handleNavBarClose() {
+    setIsNavBarOpen(false)
+  }
 
-
-function App() {
   return (
     <div className="app">
       <Switch>
@@ -20,7 +28,7 @@ function App() {
           <Main />
         </Route>
         <Route path='/movies'>
-          <Movies />
+          <Movies openNavBar={handleNavBarOpen} />
         </Route>
         <Route path='/saved-movies'>
           <SavedMovies />
@@ -38,8 +46,11 @@ function App() {
           <Error />
         </Route>
       </Switch>
+
+      <NavBar 
+      isOpen={isNavBarOpen}
+      onClose={handleNavBarClose}
+      />
     </div>
   );
 }
-
-export default App;

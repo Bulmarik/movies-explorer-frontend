@@ -20,9 +20,9 @@ export default function Register() {
   }
 
   return (
-    <div className="register">
+    <div className="user-form">
       <Link to="/">
-        <img className="header__logo element-hover" src={logo} alt='Логотип'/>
+        <img className="header__logo header__logo_center element-hover" src={logo} alt='Логотип'/>
       </Link>
       <form className="form" id="form" action="#" method="post">
         <h2 className="form__title">Добро пожаловать!</h2>
