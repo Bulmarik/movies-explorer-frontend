@@ -31,7 +31,7 @@ export default function App() {
           <Movies openNavBar={handleNavBarOpen} />
         </Route>
         <Route path='/saved-movies'>
-          <SavedMovies />
+          <SavedMovies openNavBar={handleNavBarOpen} />
         </Route>
         <Route path='/profile'>
           <Profile />

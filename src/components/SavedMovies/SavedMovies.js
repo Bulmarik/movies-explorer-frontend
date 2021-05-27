@@ -5,11 +5,11 @@ import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
 
-export default function SavedMovies() {
+export default function SavedMovies(props) {
 
   return (
     <div className="movies">
-      <Header background="header_movies"/>
+      <Header background="header_movies" openNavBar={props.openNavBar}/>
       <SearchForm />
       <MoviesCardList hideBtn="movies-card-list__else-btn-hide"/>
       <Footer />
