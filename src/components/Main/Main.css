@@ -1,0 +1,18 @@
+.main__section-header {
+  border-bottom: 1px solid #DADADA;
+}
+
+.main__section-title {
+  font-size: 22px;
+  line-height: 1.21;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin: 0 0 23px;
+}
+
+@media screen and (max-width: 482px) {
+  .main__section-title {
+    font-size: 18px;
+    margin: 0 0 28px;
+  }
+}

@@ -1,0 +1,110 @@
+.search-form {
+  padding: 80px 70px 83px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(170, 170, 170, .2);
+}
+
+.search-form__form {
+  width: 932px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(170, 170, 170, .2);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.search-form__input {
+  width: 100%;
+  padding: 0 0 0 22px;
+  box-sizing: border-box;
+  border: 1px solid #202020;
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  color: #8B8B8B;
+  background-color: inherit;
+}
+
+.search-form__input:focus{
+  background-color: inherit;
+  border-bottom: 1px solid #4285F4;
+  }
+
+.search-form__btn {
+  width: 80px;
+  height: 34px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  object-position: center;
+  object-fit: cover;
+  background-color: inherit;
+  margin: 7px;
+}
+
+.search-form__checkbox {
+  margin-left: 41px;
+}
+
+.search-form__checkbox-btn {
+  display: none;
+}
+
+.search-form__checkbox-text {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  line-height: 1.38;
+}
+
+.search-form__checkbox-text:hover {
+  cursor: pointer;
+}
+
+.search-form__checkbox-text::after {
+  content: '';
+  margin-left: 13px;
+  width: 36px;
+  height: 20px;
+  background-image: url('../../../images/smalltumb-off.svg');
+}
+
+.search-form__checkbox-btn:checked + .search-form__checkbox-text::after {
+  background-image: url('../../../images/smalltumb-on.svg');
+}
+
+@media screen and (max-width: 960px) {
+  .search-form {
+    padding: 60px 30px 56px;
+    flex-direction: column;
+  }
+
+  .search-form__form {
+    width: 100%;
+  }
+
+  .search-form__checkbox {
+    margin: 37px 0 0;
+  }
+}
+
+@media screen and (max-width: 482px) {
+  .search-form {
+    padding: 60px 10px 43px;
+  }
+
+  .search-form__checkbox {
+    margin: 44px 0 0;
+  }
+
+  .search-form__checkbox-text {
+    font-size: 11px;
+    line-height: 1.64;
+  }
+}

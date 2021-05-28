@@ -1,0 +1,157 @@
+.nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  font-weight: 500;
+}
+
+.nav_main {
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 500;
+}
+
+.nav_movies {
+  font-size: 14px;
+  line-height: 1.28;
+}
+
+.nav__items {
+  display: flex;
+  align-items: center;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #fff;
+  margin-left: 20px;
+}
+
+.nav__link_hidden {
+  display: none;
+}
+
+.nav__signin-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+  width: 76px;
+  height: 32px;
+  color: #000;
+  text-decoration: none;
+  border-radius: 3px;
+  background-color: #3DDC84;
+}
+
+.nav__profile-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  width: 100px;
+  height: 32px;
+  border: 1px solid rgba(170, 170, 170, .2);;
+  border-radius: 16px;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.14;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav__acc-icon {
+  width: 12px;
+  height: 14px;
+  margin-right: 7px;
+}
+
+.nav__bar-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: none;
+}
+
+.nav__bar-icon {
+  width: 44px;
+  height: 44px;
+}
+
+@media screen and (max-width: 960px) {
+  .nav__bar-btn {
+    display: block;
+  }
+
+  .nav__items {
+    display: none;
+  }
+
+  .nav__bar-btn_hide {
+    display: none;
+  }
+
+  .nav_popup {
+    display: flex;
+  }
+
+  .nav__items {
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .nav_movies {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .nav__item {
+    padding-bottom: 4px;
+    box-sizing: border-box;
+    margin-bottom: 22px;
+  }
+
+  .nav__item_underline {
+    border-bottom: 2px solid #fff;
+  }
+
+  .nav__link {
+    text-decoration: none;
+    color: #fff;
+    margin: 0;
+  }
+
+  .nav__link_main {
+    display: initial;
+  }
+
+  .nav__profile-btn {
+    justify-self: center;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 482px) {
+  .nav_main {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .nav__signin-btn {
+    margin-left: 14px;
+    width: 54px;
+    height: 26px;
+  }
+
+  .nav_movies {
+    font-size: 18px;
+    line-height: 1.21;
+  }
+
+  .nav__item {
+    padding-bottom: 7px;
+    margin-bottom: 15px;
+  }
+}
