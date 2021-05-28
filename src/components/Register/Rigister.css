@@ -26,8 +26,12 @@
 
 .form__input {
   width: 100%;
-  margin: 5px 0 10px;
+  margin: 5px 0 0;
+  padding: 0 0 10px;
+  box-sizing: border-box;
   border: none;
+  border-bottom: 1px solid #424242;
+  outline: none;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.21;
@@ -35,9 +39,13 @@
   background-color: inherit;
 }
 
+.form__input:focus{
+  background-color: inherit;
+  border-bottom: 1px solid #4285F4;
+  }
+
 .form__error {
   height: 18px;
-  border-top: 1px solid #424242;
   margin-bottom: 6px;
 }
 
@@ -65,6 +73,7 @@
   font-size: 14px;
   line-height: 1.21;
   color: #8B8B8B;
+
 }
 
 .form__link {

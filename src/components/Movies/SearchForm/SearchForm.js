@@ -7,7 +7,7 @@ export default function SearchForm() {
     <div className="search-form">
       <form className="search-form__form">
         <input className="search-form__input" type="search" placeholder="Фильм" required />
-        <button className="search-form__btn" type="submit" >
+        <button className="search-form__btn element-hover" type="submit" >
           <img src={searchIcon} alt="Искать" />
         </button>
       </form>

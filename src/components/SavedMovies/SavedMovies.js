@@ -9,9 +9,9 @@ export default function SavedMovies(props) {
 
   return (
     <div className="movies">
-      <Header background="header_movies" openNavBar={props.openNavBar}/>
+      <Header background="header_movies" openNavBar={props.openNavBar} />
       <SearchForm />
-      <MoviesCardList hideBtn="movies-card-list__else-btn-hide"/>
+      <MoviesCardList hideBtn="movies-card-list__else-btn-hide" cardBtn={props.cardBtn} />
       <Footer />
     </div>
   );

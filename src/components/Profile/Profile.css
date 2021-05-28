@@ -44,8 +44,14 @@
   font-weight: 400;
   line-height: 1.21;
   color: #fff;
+  outline: none;
   background-color: inherit;
   text-align: end;
+}
+
+.profile__input:focus {
+  background-color: inherit;
+  outline: 1px solid #4285F4;
 }
 
 .profile__btn {

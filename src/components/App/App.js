@@ -28,10 +28,10 @@ export default function App() {
           <Main />
         </Route>
         <Route path='/movies'>
-          <Movies openNavBar={handleNavBarOpen} />
+          <Movies openNavBar={handleNavBarOpen} cardBtn="movies-card__btn_dislike" />
         </Route>
         <Route path='/saved-movies'>
-          <SavedMovies openNavBar={handleNavBarOpen} />
+          <SavedMovies openNavBar={handleNavBarOpen} cardBtn="movies-card__btn_del" />
         </Route>
         <Route path='/profile'>
           <Profile />

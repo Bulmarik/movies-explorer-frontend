@@ -11,7 +11,7 @@ export default function Movies(props) {
     <div className="movies">
       <Header openNavBar={props.openNavBar} />
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList cardBtn={props.cardBtn} />
       <Footer />
     </div>
   );

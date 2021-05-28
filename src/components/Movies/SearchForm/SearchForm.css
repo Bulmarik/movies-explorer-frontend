@@ -22,7 +22,7 @@
   width: 100%;
   padding: 0 0 0 22px;
   box-sizing: border-box;
-  border: none;
+  border: 1px solid #202020;
   outline: none;
   font-size: 14px;
   font-weight: 400;
@@ -30,6 +30,11 @@
   color: #8B8B8B;
   background-color: inherit;
 }
+
+.search-form__input:focus{
+  background-color: inherit;
+  border-bottom: 1px solid #4285F4;
+  }
 
 .search-form__btn {
   width: 80px;
@@ -41,10 +46,6 @@
   object-fit: cover;
   background-color: inherit;
   margin: 7px;
-}
-
-.search-form__btn:hover {
-  cursor: pointer;
 }
 
 .search-form__checkbox {
