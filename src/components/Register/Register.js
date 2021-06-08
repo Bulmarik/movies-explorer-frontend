@@ -9,17 +9,17 @@ export default function Register(props) {
       const [isDirty, setIsDirty] = useState(false);
       const valid = useValidation(value, validations);
       const onChange = (e) => { setValue(e.target.value) }
-      const onBlur = () => { setIsDirty(true) }
+      const onFocus = () => { setIsDirty(true) }
       return {
         value,
         onChange,
-        onBlur,
+        onFocus,
         isDirty,
         ...valid
       }
     }
   
-    const name = useInput('', {isEmpty: true, maxLength: 30})
+    const name = useInput('', {isEmpty: true, minLength: 2, maxLength: 30})
     const email = useInput('', {isEmpty: true, isEmail: false});
     const password = useInput('', {isEmpty: true, minLength: 8, maxLength: 30});
   
@@ -28,19 +28,18 @@ export default function Register(props) {
         return 'Поле не может быть пустым';
       }
       if (inputName.isDirty && inputName.isEmailError) {
-        if (inputName === email) {
-          return 'Некорректный Email';
-        }
+        return 'Некорректный Email';
       }
       if (inputName.isDirty && inputName.minLengthError) {
         if (inputName === password) {
           return 'Минимум 8 символов';
         }
+        if (inputName === name) {
+          return 'Минимум 2 символа';
+        }
       }
       if (inputName.isDirty && inputName.maxLengthError) {
-        if (inputName === name || password) {
-          return 'Максимум 30 символов';
-        }
+        return 'Максимум 30 символов';
       }
     }
 
@@ -62,7 +61,7 @@ export default function Register(props) {
           <input
             className="form__input form__input_type_name"
             onChange={name.onChange}
-            onBlur={name.onBlur}
+            onFocus={name.onFocus}
             value={name.value}
             name="name"
             type="text"
@@ -72,18 +71,18 @@ export default function Register(props) {
           <h3 className="form__subtitle">E-mail</h3>
           <input className="form__input form__input_type_email"
             onChange={email.onChange}
-            onBlur={email.onBlur}
+            onFocus={email.onFocus}
             value={email.value}
             name="email"
             type="email"
-            // autoComplete="off"
+            autoComplete="off"
             required />
           <div className="form__error"><span className="form__error-span" id="email-error">{errorMessage(email)}</span></div>
           <h3 className="form__subtitle">Пароль</h3>
           <input
             className="form__input form__input_type_password"
             onChange={password.onChange}
-            onBlur={password.onBlur}
+            onFocus={password.onFocus}
             value={password.value}
             name="password"
             type="password"

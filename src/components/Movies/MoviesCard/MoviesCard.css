@@ -48,16 +48,7 @@
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
-  /* visibility: hidden; */
 }
-
-/* .movies-card__btn_hide {
-  visibility: hidden;
-} */
-
-/* .movies-card__btn_show {
-  visibility: initial;
-} */
 
 .movies-card__btn_like {
   background-image: url(../../../images/like-on.svg);

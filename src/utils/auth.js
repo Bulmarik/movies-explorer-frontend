@@ -1,5 +1,4 @@
 export const BASE_URL = 'https://api.diplom.bulmarik.nomoredomains.monster';
-// export const BASE_URL = 'http://localhost:3001';
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {

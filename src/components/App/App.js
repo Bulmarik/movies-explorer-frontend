@@ -13,7 +13,6 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
-import Error from '../Error/Error';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 import NavBar from '../NavBar/NavBar';
@@ -22,7 +21,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTool from '../InfoTool/InfoTool';
 import success from '../../images/success.svg';
 import fail from '../../images/fail.svg';
-
+import Error404 from '../Error404/Error404';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -75,28 +74,8 @@ function App() {
       })
       .catch((res) => {
         console.log(`Ошибка: ${res}`);
-      });
+      })
   }
-
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     mainApi.getUser()
-  //       .then((res) => {
-  //         setLoggedIn(true);
-  //         setCurrentUser(res);
-  //       })
-  //       .catch((res) => {
-  //         console.log(`Ошибка: ${res}`);
-  //       });
-  //   }
-  // }, [loggedIn]);
-
-  useEffect(() => {
-    const moviesSavedStorage = localStorage.getItem('saved-movies');
-    if (moviesSavedStorage) {
-      setSaveMovie(JSON.parse(moviesSavedStorage));
-    }
-  }, []);
 
   useEffect(() => {
     const firstSearch = localStorage.getItem('firstSearch');
@@ -106,6 +85,13 @@ function App() {
   }, [firstSearch]);
 
   useEffect(() => {
+    const moviesSavedStorage = localStorage.getItem('saved-movies');
+    if (moviesSavedStorage) {
+      setSaveMovie(JSON.parse(moviesSavedStorage));
+    }
+  }, []);
+
+  useEffect(() => {
     const moviesSearcStorage = localStorage.getItem('movies-search');
     if (moviesSearcStorage) {
       setMovies(JSON.parse(moviesSearcStorage));
@@ -113,65 +99,18 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.addEventListener('keydown', handleCloseAllPopup);
+    document.addEventListener('keydown', escFunction, false);
     return () => {
-      document.removeEventListener('keydown', handleCloseAllPopup);
+      document.removeEventListener('keydown', escFunction, false);
     };
   });
 
-  function cardLike(movie) {
-    const filterMovies = saveMovie
-      .map((res) => res.movieId)
-      .some((res) => res === movie.id);
-    if (filterMovies) {
-      const returnId = saveMovie.find((i) => i.movieId === movie.id);
-      cardDelete(returnId);
-    } else {
-      mainApi.changeLikeCardStatus(movie)      
-        .then((newCard) => {
-          if (newCard) {
-            setSaveMovie([...saveMovie, newCard]);
-            localStorage.setItem(
-              'saved-movies',
-              JSON.stringify([...saveMovie, newCard])
-            );
-          }
-        })
-        .catch((res) => {
-          console.log(`Ошибка: ${res}`);
-        });
-      localStorage.setItem('saved-movies', JSON.stringify(saveMovie));
+  const escFunction = (e) => {
+    if (e.keyCode === 27) {
+      handleCloseAllPopup();
     }
-  }
-
-  function cardDelete(card) {
-    mainApi.cardDelete(card)
-      .then((res) =>{
-        if(res) {
-          const newList = saveMovie.filter((c) => c._id !== card._id);
-          localStorage.setItem('saved-movies', JSON.stringify(newList));
-          return setSaveMovie(newList);
-        }
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      })
-  }
-
-  function handleEditProfile(data) {
-    mainApi.setUserInfo(data)
-      .then((res) => {
-        setCurrentUser(res);
-        handleInfoTooltip({
-          message: 'Данные пользователя успешно изменены',
-          icon: success,
-        });
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-      })
-  }
-
+  };
+  
   function handleRegister(data) {
     const { name, email, password } = data;
     auth.register(name, email, password)
@@ -208,10 +147,6 @@ function App() {
             .catch((err) => {
               console.log(`Ошибка: ${err}`);
             });
-          // handleInfoTooltip({
-          //   message: `Добро пожаловать ${res.name}! Для поиска фильмов введите запрос в поле ввода`,
-          //   icon: success,
-          // });
         } else {
           handleInfoTooltip({
             message: 'Пользователь с таким email уже существует',
@@ -258,78 +193,18 @@ function App() {
       });
   }
 
-  function handleSignOut() {
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('movies');
-    localStorage.removeItem('saved-movies');
-    localStorage.removeItem('firstSearch');
-    localStorage.removeItem('movies-search');
-    setCurrentUser('');
-    setMovies([]);
-    setSaveMovie([]);
-    setLoggedIn(false);
-    setFirstSearch(false);
-    setInfoTool({});
-    setSearchOrder('');
-    history.push('/');
-    setPreloader(false);
-  }
-
-  function fuseSearch(text, params) {
-    if (params) {
-      const fuse = new Fuse(params, {
-        keys: ['nameRU'],
-        includeScore: 0,
-        includeMatches: true,
-        findAllMatches: true,
-        threshold: 0.1,
-        location: 0,
-      });
-      const results = fuse.search(text);
-      const resultsArray = results.map((result) => result.item);
-      if (firstSearch === false) {
-        if (resultsArray.length === 0) {
-          setSearchOrder('Ничего не найдено');
-        } else {
-          setSearchOrder('');
-        }
-        if (window.location.pathname === '/saved-movies') {
-          if (resultsArray.length === 0) {
-            setSearchOrder('Ничего не найдено');
-          } else {
-            setSearchOrder('');
-          }
-          localStorage.setItem('movies-search', JSON.stringify(resultsArray));
-          setPreloader(false);
-          return setSaveMovie(resultsArray);
-        }
-        localStorage.setItem('movies-search', JSON.stringify(resultsArray));
-        setPreloader(false);
-        return setMovies(resultsArray);
-      } else {
-        if (window.location.pathname === '/movies') {
-          if (resultsArray.length === 0) {
-            setSearchOrder('Ничего не найдено');
-          } else {
-            setSearchOrder('');
-          }
-          localStorage.setItem('movies-search', JSON.stringify(resultsArray));
-          setPreloader(false);
-          console.log(preloader)
-          return setMovies(resultsArray);
-        }
-        if (window.location.pathname === '/saved-movies') {
-          if (resultsArray.length === 0) {
-            setSearchOrder('Ничего не найдено');
-          } else {
-            setSearchOrder('');
-          }
-          localStorage.setItem('movies-search', JSON.stringify(resultsArray));
-          setPreloader(false);
-          return setSaveMovie(resultsArray);
-        }
-      }
-    }
+  function handleEditProfile(data) {
+    mainApi.setUserInfo(data)
+      .then((res) => {
+        setCurrentUser(res);
+        handleInfoTooltip({
+          message: 'Данные пользователя успешно изменены',
+          icon: success,
+        });
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
   }
 
   const onSearch = (text) => {
@@ -370,6 +245,96 @@ function App() {
     }
   };
 
+  function fuseSearch(text, params) {
+    if (params) {
+      const fuse = new Fuse(params, {
+        keys: ['nameRU'],
+        includeScore: 0,
+        includeMatches: true,
+        findAllMatches: true,
+        threshold: 0.1,
+        location: 0,
+      });
+      const results = fuse.search(text);
+      const resultsArray = results.map((result) => result.item);
+      if (firstSearch === false) {
+        if (resultsArray.length === 0) {
+          setSearchOrder('Ничего не найдено');
+        } else {
+          setSearchOrder('');
+        }
+        if (window.location.pathname === '/saved-movies') {
+          localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+          setPreloader(false);
+          return setSaveMovie(resultsArray);
+        }
+        localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+        setPreloader(false);
+        return setMovies(resultsArray);
+      } else {
+        if (window.location.pathname === '/movies') {
+          if (resultsArray.length === 0) {
+            setSearchOrder('Ничего не найдено');
+          } else {
+            setSearchOrder('');
+          }
+          localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+          setPreloader(false);
+          return setMovies(resultsArray);
+        }
+        if (window.location.pathname === '/saved-movies') {
+          if (resultsArray.length === 0) {
+            setSearchOrder('Ничего не найдено');
+          } else {
+            setSearchOrder('');
+          }
+          localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+          setPreloader(false);
+          return setSaveMovie(resultsArray);
+        }
+      }
+    }
+  }
+  
+  function cardLike(movie) {
+    const filterMovies = saveMovie
+      .map((res) => res.movieId)
+      .some((res) => res === movie.id);
+    if (filterMovies) {
+      const returnId = saveMovie.find((i) => i.movieId === movie.id);
+      cardDelete(returnId);
+    } else {
+      mainApi.changeLikeCardStatus(movie)      
+        .then((newCard) => {
+          if (newCard) {
+            setSaveMovie([...saveMovie, newCard]);
+            localStorage.setItem(
+              'saved-movies',
+              JSON.stringify([...saveMovie, newCard])
+            );
+          }
+        })
+        .catch((res) => {
+          console.log(`Ошибка: ${res}`);
+        });
+      localStorage.setItem('saved-movies', JSON.stringify(saveMovie));
+    }
+  }
+
+  function cardDelete(card) {
+    mainApi.cardDelete(card)
+      .then((res) =>{
+        if(res) {
+          const newList = saveMovie.filter((c) => c._id !== card._id);
+          localStorage.setItem('saved-movies', JSON.stringify(newList));
+          return setSaveMovie(newList);
+        }
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
+  }
+
   function getScreenSize() {
     setScreenSize(window.innerWidth);
   }
@@ -392,9 +357,30 @@ function App() {
     setIsInfoToolOpen(false);
   }
 
+  function handleGoBack() {
+    history.push('/');
+  }
+
   function filterButtonImg() {
     const filterButtonImg = saveMovie.map((res) => res.movieId);
     return filterButtonImg;
+  }
+
+  function handleSignOut() {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('movies');
+    localStorage.removeItem('saved-movies');
+    localStorage.removeItem('firstSearch');
+    localStorage.removeItem('movies-search');
+    setCurrentUser('');
+    setMovies([]);
+    setSaveMovie([]);
+    setLoggedIn(false);
+    setFirstSearch(false);
+    setInfoTool({});
+    setSearchOrder('');
+    setOnCheckbox(false);
+    history.push('/');
   }
 
   return (
@@ -455,16 +441,14 @@ function App() {
           <Route path='/signup'>
             <Register onRegister={handleRegister} />
           </Route>
-          <Route path='/error'>
-            <Error />
+          <Route path='*'>
+            <Error404 goBack={handleGoBack}/>
           </Route>
         </Switch>
-      
         <NavBar 
           isOpen={isNavBarOpen}
           onClose={handleCloseAllPopup}
         />
-
         <InfoTool
           isOpen={isInfoToolOpen}
           onClose={handleCloseAllPopup}

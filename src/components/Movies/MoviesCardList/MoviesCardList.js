@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
-// import slova from '../../../images/33slova.png';
 import noImg from '../../../images/no-img.png';
 import Preloader from '../Preloader/Preloader';
 
@@ -110,7 +109,6 @@ export default function MoviesCardList(props) {
       setBlockButton('movies-card-list__else-btn');
     }
   }, [listMoviesAdd.initialCardsState.arrayCardsList, moviesList.length]);
-  // });
 
   function handleAddCards() {
     dispatch({ type: 'addCards' });
@@ -118,25 +116,21 @@ export default function MoviesCardList(props) {
 
   return (
     <div className="movies-card-list">
-      {props.preloader && <Preloader
-          // initPreloader={props.initPreloader}
-          // notFound={props.notFound}
-          // requestFailed={props.requestFailed}
-      />}
+      {props.preloader && <Preloader />}
       <span className="movies-card-list__span">{props.searchOrder}</span>
       <ul className="movies-card-list__items">
         <Switch>
           <Route path='/movies'>
             {moviesList.slice(0, itemsList).map((data, _id) => {
-              // console.log(data.image.url);
-              const img = data.image ? `https://api.nomoreparties.co${data.image.url}` : noImg;
+              const img = data.image
+                ? `https://api.nomoreparties.co${data.image.url}`
+                : 'https://i.stack.imgur.com/y9DpT.jpg';
               return (
                 <MoviesCard
                   key={_id}
                   data={data}
                   img={img}
                   id={data.moveId}
-                  // cardBtn={props.cardBtn}
                   buttonLikeClick={props.buttonLikeClick}
                   itemLike={props.itemLike}
                 />
@@ -145,16 +139,13 @@ export default function MoviesCardList(props) {
           </Route>
           <Route path='/saved-movies'>
             {moviesList.map((data, _id) => {
-              // console.log(data);
               const img = data.image ? data.image : noImg;
-              // console.log(data);
               return (
                 <MoviesCard
                   key={_id}
                   data={data}
                   img={img}
                   id={data.moveId}
-                  // cardBtn={props.cardBtn}
                   buttonLikeClick={props.buttonLikeClick}
                   itemLike={props.itemLike}
                 />

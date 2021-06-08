@@ -12,18 +12,17 @@ export default function MoviesCard(props) {
     }
   }
 
-  // console.log(props.data);
-
   function compareId() {
       const compareId = props.itemLike().some((res) => res === props.data.id);
       return compareId;
   }
 
-  const btnStyle = `${window.location.pathname === '/movies' ? (compareId() ? 'movies-card__btn_like' : 'movies-card__btn_dislike') : 'movies-card__btn_del'}`;
+  const btnStyle = `${window.location.pathname === '/movies'
+    ? (compareId() ? 'movies-card__btn_like' : 'movies-card__btn_dislike')
+    : 'movies-card__btn_del'}`;
 
   function saveCard() {
     props.buttonLikeClick(props.data);
-    // console.log(props.data);
   }
 
   return (

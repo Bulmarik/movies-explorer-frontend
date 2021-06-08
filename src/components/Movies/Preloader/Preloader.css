@@ -47,6 +47,7 @@
     height: 100%;
     z-index: 10;
     padding: 20px;
+    align-self: center;
 }
 
 .preloader__container {

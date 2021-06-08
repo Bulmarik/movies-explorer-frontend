@@ -99,12 +99,6 @@
     justify-content: space-between;
   }
 
-  /* .nav__items {
-    height: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-  } */
-
   .nav_movies {
     flex-direction: column;
     margin: 0;
@@ -149,11 +143,6 @@
     width: 54px;
     height: 26px;
   }
-
-  /* .nav_movies {
-    font-size: 18px;
-    line-height: 1.21;
-  } */
 
   .nav__item {
     padding-bottom: 7px;

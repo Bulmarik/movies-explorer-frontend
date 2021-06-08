@@ -21,12 +21,6 @@ export default function SearchForm(props) {
 
   const keyword = useInput('', {isEmpty: true})
 
-  // function errorMessage(inputName) {
-  //   if (inputName.isDirty && inputName.isEmpty) {
-  //     return 'Нужно ввести ключевое слово';
-  //   }
-  // }
-
   function handleSubmit(e) {
     e.preventDefault();
     if (!keyword.inputValid) {
@@ -55,7 +49,6 @@ export default function SearchForm(props) {
           type="search"
           placeholder="Фильм"
         />
-        {/* <span className="form__error-span form__error-span_search" id="name-error">{errorMessage(keyword)}</span> */}
         <button className="search-form__btn element-hover" type="submit" >
           <img src={searchIcon} alt="Искать" />
         </button>
@@ -66,6 +59,7 @@ export default function SearchForm(props) {
           type="checkbox"
           id="short-film"
           onChange={handleCheckbox}
+          checked={props.onCheckbox}
         />
         <label className="search-form__checkbox-text" htmlFor="short-film">Короткометражки</label>
       </label>

@@ -9,11 +9,11 @@ export default function Login(props) {
     const [isDirty, setIsDirty] = useState(false);
     const valid = useValidation(value, validations);
     const onChange = (e) => { setValue(e.target.value) }
-    const onBlur = () => { setIsDirty(true) }
+    const onFocus = () => { setIsDirty(true) }
     return {
       value,
       onChange,
-      onBlur,
+      onFocus,
       isDirty,
       ...valid
     }
@@ -57,18 +57,18 @@ export default function Login(props) {
           <input
             className="form__input form__input_type_email"
             onChange={email.onChange}
-            onBlur={email.onBlur}
+            onFocus={email.onFocus}
             value={email.value}
             name="email"
             type="email"
-            // autoComplete="off"
+            autoComplete="off"
             required />
           <div className="form__error"><span className="form__error-span" id="email-error">{errorMessage(email)}</span></div>
           <h3 className="form__subtitle">Пароль</h3>
           <input
             className="form__input form__input_type_password"
             onChange={password.onChange}
-            onBlur={password.onBlur}
+            onFocus={password.onFocus}
             value={password.value}
             name="password"
             type="password"

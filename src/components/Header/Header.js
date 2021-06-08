@@ -13,7 +13,6 @@ export default function Header(props) {
       <Navigation
         loggedIn={props.loggedIn}
         openNavBar={props.openNavBar}
-        // onClose={props.onClose}
       />
     </header>
   );

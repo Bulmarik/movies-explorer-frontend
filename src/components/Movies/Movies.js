@@ -12,7 +12,6 @@ export default function Movies(props) {
       <Header
         loggedIn={props.loggedIn}
         openNavBar={props.openNavBar}
-        // onClose={props.onClose}
       />
       <SearchForm
         onSearch={props.onSearch}

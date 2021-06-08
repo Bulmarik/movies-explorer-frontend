@@ -1,4 +1,5 @@
-# movies-explorer-frontend
+# Дипломный проект
+-----
 
-Ссылка на макет: https://disk.yandex.ru/d/5dF45wnnNk4CEQ  
-Ссылка на проект: https://diplom.bulmarik.nomoredomains.monster  
+[Ссылка на макет](https://disk.yandex.ru/d/5dF45wnnNk4CEQ)  
+[Ссылка на проект](https://diplom.bulmarik.nomoredomains.monster)  

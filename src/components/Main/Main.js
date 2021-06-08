@@ -15,7 +15,6 @@ export default function Main(props) {
         background="header_main"
         loggedIn={props.loggedIn}
         openNavBar={props.openNavBar}
-        // onClose={props.onClose}
       />
       <Promo />
       <AboutProject />
