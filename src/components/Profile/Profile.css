@@ -65,8 +65,12 @@
 
 .profile__btn_submit {
   font-weight: 400;
-  color: #fff;
+  color: #424242;
   margin-top: 220px;
+}
+
+.profile__btn_submit_activated {
+  color: #fff;
 }
 
 .profile__btn_signout {

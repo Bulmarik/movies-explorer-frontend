@@ -11,7 +11,12 @@ export default function Main(props) {
 
   return (
     <main className="main">
-      <Header background="header_main"/>
+      <Header
+        background="header_main"
+        loggedIn={props.loggedIn}
+        openNavBar={props.openNavBar}
+        // onClose={props.onClose}
+      />
       <Promo />
       <AboutProject />
       <Techs />

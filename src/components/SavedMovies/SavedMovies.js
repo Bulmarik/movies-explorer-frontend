@@ -9,9 +9,25 @@ export default function SavedMovies(props) {
 
   return (
     <div className="movies">
-      <Header background="header_movies" openNavBar={props.openNavBar} />
-      <SearchForm />
-      <MoviesCardList hideBtn="movies-card-list__else-btn-hide" cardBtn={props.cardBtn} />
+      <Header
+        // background="header_movies"
+        loggedIn={props.loggedIn}
+        openNavBar={props.openNavBar}
+        // onClose={props.onClose}
+      />
+      <SearchForm
+        onSearch={props.onSearch}
+        onCheckbox={props.onCheckbox}
+        setOnCheckbox={props.setOnCheckbox}
+        onError={props.onError}
+      />
+      <MoviesCardList
+        cardBtn={props.cardBtn}
+        movies={props.saveMovie}
+        onCheckbox={props.onCheckbox}
+        buttonLikeClick={props.buttonLikeClick}
+        itemLike={props.itemLike}
+      />
       <Footer />
     </div>
   );

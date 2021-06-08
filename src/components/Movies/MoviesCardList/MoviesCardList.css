@@ -8,7 +8,6 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-template-rows: repeat();
   grid-column-gap: 24px;
   grid-row-gap: 37px;
 }
@@ -25,7 +24,7 @@
   border: none;
 }
 
-.movies-card-list__else-btn-hide {
+.movies-card-list__else-btn_hide {
   display: none;
 }
 

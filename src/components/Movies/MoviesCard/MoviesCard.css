@@ -4,6 +4,12 @@
   background-color: #222222;
 }
 
+.movies-card__link {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
 .movies-card__img {
   display: block;
   width: 100%;

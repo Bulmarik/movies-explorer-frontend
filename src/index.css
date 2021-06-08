@@ -20,6 +20,7 @@
 @import url(./components/Profile/Profile.css);
 @import url(./components/Error/Error.css);
 @import url(./components/NavBar/NavBar.css);
+@import url(./components/InfoTool/InfoTool.css);
 
 .page {
   background-color: #000;
