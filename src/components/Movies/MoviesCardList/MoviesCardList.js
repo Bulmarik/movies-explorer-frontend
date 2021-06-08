@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 // import slova from '../../../images/33slova.png';
 import noImg from '../../../images/no-img.png';
+import Preloader from '../Preloader/Preloader';
 
 export default function MoviesCardList(props) {
 
@@ -117,6 +118,12 @@ export default function MoviesCardList(props) {
 
   return (
     <div className="movies-card-list">
+      {props.preloader && <Preloader
+          // initPreloader={props.initPreloader}
+          // notFound={props.notFound}
+          // requestFailed={props.requestFailed}
+      />}
+      <span className="movies-card-list__span">{props.searchOrder}</span>
       <ul className="movies-card-list__items">
         <Switch>
           <Route path='/movies'>

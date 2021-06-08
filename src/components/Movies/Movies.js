@@ -27,6 +27,8 @@ export default function Movies(props) {
         onCheckbox={props.onCheckbox}
         buttonLikeClick={props.buttonLikeClick}
         itemLike={props.itemLike}
+        preloader={props.preloader}
+        searchOrder={props.searchOrder}
       />
       <Footer />
     </div>

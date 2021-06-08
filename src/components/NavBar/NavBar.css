@@ -1,4 +1,4 @@
-.popup {
+.bar {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -9,11 +9,11 @@
   visibility: hidden;
 }
 
-.popup_opened {
+.bar_opened {
   visibility: visible;
 }
 
-.popup__overlay {
+.bar__overlay {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -21,7 +21,7 @@
   opacity: 0.3;
 }
 
-.popup__container {
+.bar__container {
   padding: 159px 90px 90px;
   box-sizing: border-box;
   display: flex;
@@ -32,7 +32,7 @@
   z-index: 1;
 }
 
-.popup__close-btn {
+.bar__close-btn {
   width: 23px;
   height: 23px;
   background: transparent;
@@ -47,18 +47,18 @@
 }
 
 @media screen and (max-width: 960px) {
-  .popup {
+  .bar {
     display: flex;
   }
 }
 
 @media screen and (max-width: 482px) {
-  .popup__close-btn {
+  .bar__close-btn {
     top: 17px;
     right: 17px;
   }
   
-  .popup__container {
+  .bar__container {
     padding: 144px 10px 46px;
   }
 }

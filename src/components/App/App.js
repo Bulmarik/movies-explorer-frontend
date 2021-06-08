@@ -29,12 +29,14 @@ function App() {
   const [screenSize, setScreenSize] = useState(window.innerWidth)
   const [movies, setMovies] = useState([]);
   const [saveMovie, setSaveMovie] = useState([]);
+  const [searchOrder, setSearchOrder] = useState('');
   const [onCheckbox, setOnCheckbox] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [firstSearch, setFirstSearch] = useState(false);
   const [infoTool, setInfoTool] = useState({message: '', icon: ''});
   const [isInfoToolOpen, setIsInfoToolOpen] = useState(false);
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
+  const [preloader, setPreloader] = useState(false);
   const history = useHistory();
   const path = window.location.pathname;
 
@@ -44,6 +46,7 @@ function App() {
       auth.getContent(jwt)
         .then((res) => {
           if (res) {
+            setCurrentUser(res);
             setLoggedIn(true);
             history.push(path);
           }
@@ -72,21 +75,21 @@ function App() {
       })
       .catch((res) => {
         console.log(`Ошибка: ${res}`);
-      })
+      });
   }
 
-  useEffect(() => {
-    if (loggedIn) {
-      mainApi.getUser()
-        .then((res) => {
-          setLoggedIn(true);
-          setCurrentUser(res);
-        })
-        .catch((res) => {
-          console.log(`Ошибка: ${res}`);
-        });
-    }
-  }, [loggedIn]);
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     mainApi.getUser()
+  //       .then((res) => {
+  //         setLoggedIn(true);
+  //         setCurrentUser(res);
+  //       })
+  //       .catch((res) => {
+  //         console.log(`Ошибка: ${res}`);
+  //       });
+  //   }
+  // }, [loggedIn]);
 
   useEffect(() => {
     const moviesSavedStorage = localStorage.getItem('saved-movies');
@@ -173,7 +176,8 @@ function App() {
     const { name, email, password } = data;
     auth.register(name, email, password)
       .then((res) => {
-        if(res.status === 200){
+        if(res.status === 200) {
+          setCurrentUser(res);
           history.push('/movies');
           auth.authorize(email, password)
             .then((res) => {
@@ -181,6 +185,10 @@ function App() {
                 localStorage.setItem('jwt', res.token);
                 localStorage.setItem('saved-movies', JSON.stringify([]));
                 mainApi.setToken(res.token);
+                handleInfoTooltip({
+                  message: `Добро пожаловать ${res.name}! Для поиска фильмов введите запрос в поле ввода`,
+                  icon: success,
+                });
                 return res.token;
               }
             })
@@ -200,10 +208,10 @@ function App() {
             .catch((err) => {
               console.log(`Ошибка: ${err}`);
             });
-          handleInfoTooltip({
-            message: `Добро пожаловать ${res.name}! Для поиска фильмов введите запрос в поле ввода`,
-            icon: success,
-          });
+          // handleInfoTooltip({
+          //   message: `Добро пожаловать ${res.name}! Для поиска фильмов введите запрос в поле ввода`,
+          //   icon: success,
+          // });
         } else {
           handleInfoTooltip({
             message: 'Пользователь с таким email уже существует',
@@ -236,7 +244,7 @@ function App() {
             });
           history.push('/movies');
           handleInfoTooltip({
-            message: `Добро пожаловать ${res.name}! Для поиска фильмов введите запрос в поле ввода`,
+            message: `Добро пожаловать, ${res.name}! Для поиска фильмов введите запрос в поле ввода`,
             icon: success,
           });
         }
@@ -261,7 +269,10 @@ function App() {
     setSaveMovie([]);
     setLoggedIn(false);
     setFirstSearch(false);
+    setInfoTool({});
+    setSearchOrder('');
     history.push('/');
+    setPreloader(false);
   }
 
   function fuseSearch(text, params) {
@@ -277,19 +288,44 @@ function App() {
       const results = fuse.search(text);
       const resultsArray = results.map((result) => result.item);
       if (firstSearch === false) {
+        if (resultsArray.length === 0) {
+          setSearchOrder('Ничего не найдено');
+        } else {
+          setSearchOrder('');
+        }
         if (window.location.pathname === '/saved-movies') {
+          if (resultsArray.length === 0) {
+            setSearchOrder('Ничего не найдено');
+          } else {
+            setSearchOrder('');
+          }
           localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+          setPreloader(false);
           return setSaveMovie(resultsArray);
         }
         localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+        setPreloader(false);
         return setMovies(resultsArray);
       } else {
         if (window.location.pathname === '/movies') {
+          if (resultsArray.length === 0) {
+            setSearchOrder('Ничего не найдено');
+          } else {
+            setSearchOrder('');
+          }
           localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+          setPreloader(false);
+          console.log(preloader)
           return setMovies(resultsArray);
         }
         if (window.location.pathname === '/saved-movies') {
+          if (resultsArray.length === 0) {
+            setSearchOrder('Ничего не найдено');
+          } else {
+            setSearchOrder('');
+          }
           localStorage.setItem('movies-search', JSON.stringify(resultsArray));
+          setPreloader(false);
           return setSaveMovie(resultsArray);
         }
       }
@@ -297,6 +333,8 @@ function App() {
   }
 
   const onSearch = (text) => {
+    setSearchOrder('');
+    setPreloader(true);
     if (window.location.pathname === '/saved-movies') {
       if (text) {
         const moviesSavedStorage = localStorage.getItem('saved-movies');
@@ -319,6 +357,9 @@ function App() {
             })
             .catch((err) => {
               if (err) {
+                setPreloader(false);
+                setSearchOrder('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.');
+                console.log(`Ошибка: ${err}`);
               }
             });
         }
@@ -380,6 +421,8 @@ function App() {
             buttonLikeClick={cardLike}
             itemLike={filterButtonImg}
             onError={handleInfoTooltip}
+            preloader={preloader}
+            searchOrder={searchOrder}
           />
           <ProtectedRoute
             path='/saved-movies'
@@ -395,6 +438,8 @@ function App() {
             buttonLikeClick={cardDelete}
             itemLike={filterButtonImg}
             onError={handleInfoTooltip}
+            preloader={preloader}
+            searchOrder={searchOrder}
           />
           <ProtectedRoute
             path='/profile'

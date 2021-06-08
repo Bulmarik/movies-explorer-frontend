@@ -21,11 +21,11 @@ export default function SearchForm(props) {
 
   const keyword = useInput('', {isEmpty: true})
 
-  function errorMessage(inputName) {
-    if (inputName.isDirty && inputName.isEmpty) {
-      return 'Нужно ввести ключевое слово';
-    }
-  }
+  // function errorMessage(inputName) {
+  //   if (inputName.isDirty && inputName.isEmpty) {
+  //     return 'Нужно ввести ключевое слово';
+  //   }
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -55,7 +55,7 @@ export default function SearchForm(props) {
           type="search"
           placeholder="Фильм"
         />
-        <span className="form__error-span form__error-span_search" id="name-error">{errorMessage(keyword)}</span>
+        {/* <span className="form__error-span form__error-span_search" id="name-error">{errorMessage(keyword)}</span> */}
         <button className="search-form__btn element-hover" type="submit" >
           <img src={searchIcon} alt="Искать" />
         </button>

@@ -108,6 +108,8 @@
   .nav_movies {
     flex-direction: column;
     margin: 0;
+    font-size: 18px;
+    line-height: 1.21;
   }
 
   .nav__item {
@@ -148,10 +150,10 @@
     height: 26px;
   }
 
-  .nav_movies {
+  /* .nav_movies {
     font-size: 18px;
     line-height: 1.21;
-  }
+  } */
 
   .nav__item {
     padding-bottom: 7px;
