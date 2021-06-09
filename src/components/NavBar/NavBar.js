@@ -14,7 +14,7 @@ export default function NavBar(props) {
           onClick={props.onClose} >
         </button>        
         <Navigation
-          onClose={props.onClose}
+          onLinkClick={props.onLinkClick}
           hideBtn="nav__bar-btn_hide"
           popupNav="nav_popup"
           linkMain="nav__link_main" />

@@ -26,16 +26,16 @@ export default function Navigation(props) {
           <div className={`nav__items ${props.popupNav}`}>
             <ul className="nav nav_movies">
               <li className="nav__item">
-                <Link to="/" className={`nav__link nav__link_hidden element-hover ${props.linkMain}`} onClick={props.onClose}>Главная</Link>
+                <Link to="/" className={`nav__link nav__link_hidden element-hover ${props.linkMain}`} onClick={props.onLinkClick}>Главная</Link>
               </li>
               <li className="nav__item">
-                <Link to="/movies" className="nav__link element-hover" onClick={props.onClose}>Фильмы</Link>
+                <Link to="/movies" className="nav__link element-hover" onClick={props.onLinkClick}>Фильмы</Link>
               </li>
               <li className="nav__item">
-                <Link to="/saved-movies" className="nav__link element-hover" onClick={props.onClose}>Сохраненные фильмы</Link>
+                <Link to="/saved-movies" className="nav__link element-hover" onClick={props.onLinkClick}>Сохраненные фильмы</Link>
               </li>
             </ul>
-            <Link to="/profile" className="nav__profile-btn element-hover" onClick={props.onClose}>
+            <Link to="/profile" className="nav__profile-btn element-hover" onClick={props.onLinkClick}>
               <img className="nav__acc-icon" src={accIcon} alt="иконка профиля" />
               Аккаунт
             </Link>

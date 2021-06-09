@@ -10,10 +10,9 @@ export default function SavedMovies(props) {
   return (
     <div className="movies">
       <Header
-        // background="header_movies"
         loggedIn={props.loggedIn}
         openNavBar={props.openNavBar}
-        // onClose={props.onClose}
+        onLinkClick={props.onLinkClick}
       />
       <SearchForm
         onSearch={props.onSearch}

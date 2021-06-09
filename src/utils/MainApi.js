@@ -33,7 +33,6 @@ class MainApi {
   }
 
   changeLikeCardStatus(movie) {
-    // console.log(url('../images/no-img.png'))
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: this._headers,

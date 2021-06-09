@@ -353,8 +353,9 @@ function App() {
   }
 
   function handleCloseAllPopup() {
-    setIsNavBarOpen(false)
+    setIsNavBarOpen(false);
     setIsInfoToolOpen(false);
+    setSearchOrder('');
   }
 
   function handleGoBack() {
@@ -409,6 +410,7 @@ function App() {
             onError={handleInfoTooltip}
             preloader={preloader}
             searchOrder={searchOrder}
+            onLinkClick={handleCloseAllPopup}
           />
           <ProtectedRoute
             path='/saved-movies'
@@ -426,6 +428,7 @@ function App() {
             onError={handleInfoTooltip}
             preloader={preloader}
             searchOrder={searchOrder}
+            onLinkClick={handleCloseAllPopup}
           />
           <ProtectedRoute
             path='/profile'
@@ -447,7 +450,7 @@ function App() {
         </Switch>
         <NavBar 
           isOpen={isNavBarOpen}
-          onClose={handleCloseAllPopup}
+          onLinkClick={handleCloseAllPopup}
         />
         <InfoTool
           isOpen={isInfoToolOpen}
