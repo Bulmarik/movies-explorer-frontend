@@ -9,9 +9,27 @@ export default function Movies(props) {
 
   return (
     <div className="movies">
-      <Header openNavBar={props.openNavBar} />
-      <SearchForm />
-      <MoviesCardList cardBtn={props.cardBtn} />
+      <Header
+        loggedIn={props.loggedIn}
+        openNavBar={props.openNavBar}
+        onLinkClick={props.onLinkClick}
+      />
+      <SearchForm
+        onSearch={props.onSearch}
+        onCheckbox={props.onCheckbox}
+        setOnCheckbox={props.setOnCheckbox}
+        onError={props.onError}
+      />
+      <MoviesCardList
+        cardBtn={props.cardBtn}
+        movies={props.movies}
+        screen={props.screen}
+        onCheckbox={props.onCheckbox}
+        buttonLikeClick={props.buttonLikeClick}
+        itemLike={props.itemLike}
+        preloader={props.preloader}
+        searchOrder={props.searchOrder}
+      />
       <Footer />
     </div>
   );

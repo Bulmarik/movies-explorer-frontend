@@ -45,6 +45,7 @@
   object-position: center;
   object-fit: cover;
   background-color: inherit;
+  outline: none;
   margin: 7px;
 }
 

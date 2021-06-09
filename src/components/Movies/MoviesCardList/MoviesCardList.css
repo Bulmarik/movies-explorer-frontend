@@ -1,5 +1,7 @@
 .movies-card-list {
   padding: 70px 70px 80px;
+  display: flex;
+  flex-direction: column;
 }
 
 .movies-card-list__items {
@@ -8,7 +10,6 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-template-rows: repeat();
   grid-column-gap: 24px;
   grid-row-gap: 37px;
 }
@@ -25,8 +26,14 @@
   border: none;
 }
 
-.movies-card-list__else-btn-hide {
+.movies-card-list__else-btn_hide {
   display: none;
+}
+
+.movies-card-list__span {
+  font-size: 18px;
+  align-self: center;
+  text-align: center;
 }
 
 @media screen and (max-width: 960px) {

@@ -4,6 +4,12 @@
   background-color: #222222;
 }
 
+.movies-card__link {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
 .movies-card__img {
   display: block;
   width: 100%;
@@ -42,16 +48,7 @@
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
-  /* visibility: hidden; */
 }
-
-/* .movies-card__btn_hide {
-  visibility: hidden;
-} */
-
-/* .movies-card__btn_show {
-  visibility: initial;
-} */
 
 .movies-card__btn_like {
   background-image: url(../../../images/like-on.svg);
