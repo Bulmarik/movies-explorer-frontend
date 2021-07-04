@@ -1,5 +1,9 @@
-# Дипломный проект
+# Movies explorer (front-end)
+
+Поисковый сайт, с возможностью создания собственной коллекции видео
 -----
 
-[Ссылка на макет](https://disk.yandex.ru/d/5dF45wnnNk4CEQ)  
-[Ссылка на проект](https://diplom.bulmarik.nomoredomains.monster)  
+Технологии: JavaScript, HTML5, CSS, NPM, React, Git, ООП, БЭМ
+
+Развертывание: скачать архив, разархивировать, открыть в редакторе кода.  
+Установить зависимости (npm instal) и запустить проект (npm start).
